@@ -35,3 +35,18 @@ button.newArray{
 
 /* Styling My Main Content */
 
+.container{
+    background: #262424;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 615px;
+    overflow: hidden;
+}
+
+.bar{
+    background: #3498db;
+    margin: 50px 3px;
+    border-radius: 3px;
+}
