@@ -17,49 +17,61 @@ function swap(a, b,copy) {
     copy[b] = temp;
 }
 
-function animate(swaps){
-    if(swaps.length == 0){
-        showBars()
+function animate(moves){
+    if(moves.length == 0){
+        showBars() // agar bars sorted ho gaye to again showBars() call karo so that background color wale swapped bars mai color hatt jaye.
     }
     else{
-        const [i,j] = swaps.shift();
+        const move = moves.shift();
+        const [i,j] = move.indices;
 
-        swap(i,j,arr);
-        showBars([i,j]);
+        if(move.type=="swap") swap(i,j,arr);
+
+        showBars(move);
         setTimeout(function(){
-            animate(swaps);
+            animate(moves);
         },10)
     }
 }
 
 
 function bubbleSort(){
-    const swaps = [];
+    const moves = [];
     const copy = [...arr];
     console.log("yes")
 
     for(let i = 1; i <= (n-1); i++){
         for(let j = 0; j < (n-i); j++){
+            // Confusion hai ki yeh below colors kaise show honge swapped bars ke and add sound also.
+            moves.push({
+                indices : [j,j+1],
+                type : "comp",
+            });
+
             if(copy[j] > copy[j+1]){
-                swaps.push([j,j+1]);
+                moves.push({
+                    indices : [j,j+1],
+                    type : "swap",
+                });
                 swap(j,j+1,copy);
             }
         }
     }
-    animate(swaps)
+    animate(moves)
     showBars()
 }
 
 // Below is showing the bars on screen.
-function showBars(indices){
+function showBars(move){
     container.innerHTML = "";
     for(let i = 0; i < n; i++){
         let bar = document.createElement("div")
         bar.style.height = arr[i] * 80 + "%"
         bar.style.width = "20px"
         bar.classList.add("bar");
-        if(indices && indices.includes(i)){
-            bar.style.backgroundColor = "red";
+        // when we are swapping two bars and showing it to the screen then at that time we are just giving Background color to those swapped bars .
+        if(move && move.indices.includes(i)){
+            bar.style.backgroundColor = move.type == "swap" ? "red" : "blue";
         }
         container.appendChild(bar);
     }
