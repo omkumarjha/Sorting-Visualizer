@@ -5,6 +5,7 @@ let allSorts = document.querySelectorAll(".sort")
 let barSizeRangeInput = document.querySelector(".barSizeRangeInput")
 let speedBarRangeInput = document.querySelector(".speedBarRangeInput")
 let newArray = document.querySelector(".newArray")
+let speed = speedBarRangeInput.value;
 
 init(); // This function is just to initalize the bars with random heights and later we will apply sorting .
 function init(){
@@ -35,7 +36,7 @@ function animate(moves){
         showBars(move);
         setTimeout(function(){
             animate(moves);
-        },10)
+        },speed)
     }
 }
 
@@ -111,4 +112,10 @@ Array.from(allSorts).forEach((element,index)=>{
 
 barSizeRangeInput.addEventListener("input",()=>{
     n = barSizeRangeInput.value;
+    init();
+})
+
+speedBarRangeInput.addEventListener("input",()=>{
+    speed = speedBarRangeInput.value;
+    speed = 1000 - speed;
 })
