@@ -1,6 +1,7 @@
-let n = 50;
-const arr=[];
+let n = 50; // representing Number of bars 
+const arr=[]; // where we will put all the bars 
 let container = document.querySelector(".container");
+let allSorts = document.querySelectorAll(".sort")
 
 init(); // This function is just to initalize the bars with random heights and later we will apply sorting .
 function init(){
@@ -30,7 +31,7 @@ function animate(moves){
         showBars(move);
         setTimeout(function(){
             animate(moves);
-        },10)
+        },50)
     }
 }
 
@@ -38,18 +39,17 @@ function animate(moves){
 function bubbleSort(){
     const moves = [];
     const copy = [...arr];
-    console.log("yes")
 
     for(let i = 1; i <= (n-1); i++){
         for(let j = 0; j < (n-i); j++){
             // Confusion hai ki yeh below colors kaise show honge swapped bars ke and add sound also.
-            moves.push({
+            moves.push({ // For every comparison yeh wala object add hote rahega
                 indices : [j,j+1],
                 type : "comp",
             });
 
             if(copy[j] > copy[j+1]){
-                moves.push({
+                moves.push({ // jab final swapping honi hogi tab yeh wala object dalega . To visualize better change setTimeOut to 1000 ms.
                     indices : [j,j+1],
                     type : "swap",
                 });
@@ -71,8 +71,18 @@ function showBars(move){
         bar.classList.add("bar");
         // when we are swapping two bars and showing it to the screen then at that time we are just giving Background color to those swapped bars .
         if(move && move.indices.includes(i)){
-            bar.style.backgroundColor = move.type == "swap" ? "red" : "blue";
+            bar.style.backgroundColor = move.type == "swap" ? "skyblue" : "pink";
         }
         container.appendChild(bar);
     }
 }
+
+// Below code jis bhi sorting name pe click ho raha hai usko highlight kardega.
+Array.from(allSorts).forEach((element,index)=>{
+    element.addEventListener("click",(e)=>{
+        Array.from(allSorts).forEach((element)=>{
+            element.style.background = "none";
+        })
+        e.target.style.background = "#3498db";
+    })
+})
