@@ -2,6 +2,9 @@ let n = 50; // representing Number of bars
 const arr=[]; // where we will put all the bars 
 let container = document.querySelector(".container");
 let allSorts = document.querySelectorAll(".sort")
+let barSizeRangeInput = document.querySelector(".barSizeRangeInput")
+let speedBarRangeInput = document.querySelector(".speedBarRangeInput")
+let newArray = document.querySelector(".newArray")
 
 init(); // This function is just to initalize the bars with random heights and later we will apply sorting .
 function init(){
@@ -21,6 +24,7 @@ function swap(a, b,copy) {
 function animate(moves){
     if(moves.length == 0){
         showBars() // agar bars sorted ho gaye to again showBars() call karo so that background color wale swapped bars mai color hatt jaye.
+        enable_input_buttons(); // saare input buttons work karne lag jayenge only after the animation ends.
     }
     else{
         const move = moves.shift();
@@ -31,12 +35,30 @@ function animate(moves){
         showBars(move);
         setTimeout(function(){
             animate(moves);
-        },50)
+        },10)
     }
 }
 
+function disable_input_buttons(){
+    Array.from(allSorts).forEach((element)=>{
+        element.disabled = true;
+    })
+    barSizeRangeInput.disabled = true;
+    speedBarRangeInput.disabled = true;
+    newArray.disabled = true;
+}
+
+function enable_input_buttons(){
+    Array.from(allSorts).forEach((element)=>{
+        element.disabled = false;
+    })
+    barSizeRangeInput.disabled = false;
+    speedBarRangeInput.disabled = false;
+    newArray.disabled = false;
+}
 
 function bubbleSort(){
+    disable_input_buttons();
     const moves = [];
     const copy = [...arr];
 
@@ -57,7 +79,7 @@ function bubbleSort(){
             }
         }
     }
-    animate(moves)
+    animate(moves);
     showBars()
 }
 
@@ -71,7 +93,7 @@ function showBars(move){
         bar.classList.add("bar");
         // when we are swapping two bars and showing it to the screen then at that time we are just giving Background color to those swapped bars .
         if(move && move.indices.includes(i)){
-            bar.style.backgroundColor = move.type == "swap" ? "skyblue" : "pink";
+            bar.style.backgroundColor = move.type == "swap" ? "blue" : "red";
         }
         container.appendChild(bar);
     }
@@ -85,4 +107,8 @@ Array.from(allSorts).forEach((element,index)=>{
         })
         e.target.style.background = "#3498db";
     })
+})
+
+barSizeRangeInput.addEventListener("input",()=>{
+    n = barSizeRangeInput.value;
 })

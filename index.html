@@ -10,6 +10,10 @@
     <!-- Header part of the website  -->
     <header>
         <nav>
+            <div class="barSizeRange">
+                <span>Size:</span>
+                <input type="range" class="barSizeRangeInput" min="10" max="65">
+            </div>
             <ul>
                 <button onclick="init()" class="newArray">Generate New Array</button>
                 <button onclick="bubbleSort()" class="bubble sort">Bubble Sort</button>
@@ -19,6 +23,10 @@
                 <button class="heap sort">Heap Sort</button>
                 <button class="merge sort">Merge Sort</button>
             </ul>
+            <div class="speedBarRange">
+                <span>Speed:</span>
+                <input type="range" min="5" max="1000" class="speedBarRangeInput">
+            </div>
         </nav>
     </header>
 
