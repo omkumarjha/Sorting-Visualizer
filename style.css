@@ -40,6 +40,10 @@ button.newArray{
   background: #3498db;
 }
 
+span{
+    margin-bottom: 5px;
+}
+
 /* Styling My Main Content */
 
 .container{

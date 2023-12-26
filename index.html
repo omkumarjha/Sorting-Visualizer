@@ -16,7 +16,7 @@
             </div>
             <ul>
                 <button onclick="init()" class="newArray">Generate New Array</button>
-                <button onclick="bubbleSort()" class="bubble sort">Bubble Sort</button>
+                <button class="bubble sort">Bubble Sort</button>
                 <button class="selection sort">Selection Sort</button>
                 <button class="insertion sort">Insertion Sort</button>
                 <button class="quick sort">Quick Sort</button>
@@ -25,7 +25,7 @@
             </ul>
             <div class="speedBarRange">
                 <span>Speed:</span>
-                <input type="range" min="5" max="1000" class="speedBarRangeInput">
+                <input type="range" min="1" step="1" max="5" class="speedBarRangeInput">
             </div>
         </nav>
     </header>
@@ -39,5 +39,14 @@
     </main>
 
 </body>
-<script src="script.js"></script>
+<!-- Included every working scripts -->
+<script src="scripts/main.js"></script>
+<script src="scripts/bubbleSort.js"></script>
+<script src="scripts/insertionSort.js"></script>
+<script src="scripts/selectionSort.js"></script>
+<script src="scripts/quickSort.js"></script>
+<script src="scripts/mergeSort.js"></script>
+<script src="scripts/heapSort.js"></script>
+<script src="scripts/visualization.js"></script>
+
 </html>
