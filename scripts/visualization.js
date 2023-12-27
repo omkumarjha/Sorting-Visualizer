@@ -1,4 +1,4 @@
-let c_time = 0;
+var c_time = 0;
 
 // Every calling of barUpdate c_time += delay_time ho jayega .
 // iss function ka kaam hai ji jth baar ke mai new color dena and uski height ko set kardena with new random value.

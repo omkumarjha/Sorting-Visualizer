@@ -1,7 +1,8 @@
 
 // Below is the Bubble sort code.
 function bubbleSort(){
-
+    c_time = 0;
+    
     for(var i = 1; i <= (n-1); i++){
         for(var j = 0; j < (n-i); j++){
 

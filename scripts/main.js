@@ -6,7 +6,15 @@ let allSorts = document.querySelectorAll(".sort")
 let barSizeRangeInput = document.querySelector(".barSizeRangeInput")
 let speedbarrangeInput = document.querySelector(".speedBarRangeInput")
 let newArray = document.querySelector(".newArray")
-let speed = 1000;
+let speed = speedbarrangeInput.value;
+
+// below is for initial speed setup .
+if(speed == '1') speed = 1;
+else if(speed == '2') speed = 10;
+else if(speed == '3') speed = 100;
+else if(speed == '4') speed = 1000;
+else speed = 10000;
+
 let delay_time=10000/(Math.floor(n/10)*speed); // Inital delay hai jaise speed change hogi again delay change ho jayega.
 
 init(); // This function is just to initalize the bars with random heights and later we will apply sorting .
@@ -15,7 +23,6 @@ function init(){
         bars[i] = Math.random();
     }
     showBars();
-    c_time=0;
 }
 
 // It will disable all input and buttons.
@@ -76,8 +83,6 @@ speedbarrangeInput.addEventListener("input",()=>{
         case "5":
             speed = 10000;
             break;
-        default:
-            speed = 1000;
     }
     delay_time=10000/(Math.floor(n/10)*speed); 
 })
@@ -91,7 +96,7 @@ function runalgo(e){
                         break;
         case "Selection Sort":selectionSort();
                         break;
-        case "Insertion Sort":Insertion();
+        case "Insertion Sort":insertionSort();
                         break;
         case "Merge Sort":Merge();
                         break;
