@@ -100,7 +100,7 @@ function runalgo(e){
                         break;
         case "Merge Sort":Merge();
                         break;
-        case "Quick Sort":Quick();
+        case "Quick Sort":quickSort();
                         break;
         case "Heap Sort":Heap();
                         break;
