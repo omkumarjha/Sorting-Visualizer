@@ -1,9 +1,8 @@
 function merge(start,end){
-    let mid = start + (end - start)/2;
+    let mid = Math.floor(start + (end - start) / 2);
 
-    let len1 = Math.max(mid - start + 1, 0); // Ensure non-negative length
-    let len2 = Math.max(end - mid, 0);       // Ensure non-negative length
-
+    let len1 = mid - start + 1; // No need for Math.max since mid is already calculated correctly
+    let len2 = end - mid;
     let first = new Array(len1);
     let second = new Array(len2);
 
@@ -24,6 +23,9 @@ function merge(start,end){
     mergeIndex = start;
 
     while(i < len1 && j < len2){
+        barUpdate(barDivs[i],bars[i],"red");
+        barUpdate(barDivs[j],bars[j],"red");
+
         if(first[i] < second[j]){
             bars[mergeIndex++] = first[i++];
         }
@@ -39,6 +41,10 @@ function merge(start,end){
     while(j < len2){
         bars[mergeIndex++] = second[j++];
     }
+
+    for(let i = start; i <= end; i++){
+        barUpdate(barDivs[i],bars[i],"green");
+    }
 }
 
 function merging(start,end){
@@ -47,7 +53,9 @@ function merging(start,end){
         return;
     }
     else{
-        let mid = start + (end - start)/2;
+        let mid = Math.floor(start + (end - start) / 2);
+
+        barUpdate(barDivs[mid],bars[mid],"yellow");
 
         // left part ko sort karo
         merging(start,mid);
