@@ -1,4 +1,3 @@
-let n = 50; // representing Number of bars 
 const bars=[]; // where we will put all the bars random value.
 const barDivs=[]; // Jaha pe saare bar elements aayenge.
 let container = document.querySelector(".container");
@@ -7,6 +6,7 @@ let barSizeRangeInput = document.querySelector(".barSizeRangeInput")
 let speedbarrangeInput = document.querySelector(".speedBarRangeInput")
 let newArray = document.querySelector(".newArray")
 let speed = speedbarrangeInput.value;
+let n = barSizeRangeInput.value; // representing Number of bars 
 
 // below is for initial speed setup .
 if(speed == '1') speed = 1;
@@ -98,11 +98,11 @@ function runalgo(e){
                         break;
         case "Insertion Sort":insertionSort();
                         break;
-        case "Merge Sort":Merge();
+        case "Merge Sort":mergeSort();
                         break;
         case "Quick Sort":quickSort();
                         break;
-        case "Heap Sort":Heap();
+        case "Heap Sort":heapSort();
                         break;
     }
 }
