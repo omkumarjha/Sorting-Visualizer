@@ -1,20 +1,25 @@
 function merge(start,end){
     let mid = Math.floor(start + (end - start) / 2);
 
-    let len1 = mid - start + 1; // No need for Math.max since mid is already calculated correctly
+    let len1 = mid - start + 1; 
     let len2 = end - mid;
     let first = new Array(len1);
+    let firstDiv = new Array(len1);
+
     let second = new Array(len2);
+    let secondDiv = new Array(len2);
 
     // copy 
     let mergeIndex = start;
     for(let i = 0; i < len1; i++){
-        first[i] = bars[mergeIndex++];
+        first[i] = bars[mergeIndex];
+        firstDiv[i] = barDivs[mergeIndex++];
     }
 
     mergeIndex = mid + 1;
     for(let i = 0; i < len2; i++){
-        second[i] = bars[mergeIndex++];
+        second[i] = bars[mergeIndex];
+        secondDiv[i] = barDivs[mergeIndex++];
     }
 
     // Now merge those two sorted arrays
@@ -23,8 +28,8 @@ function merge(start,end){
     mergeIndex = start;
 
     while(i < len1 && j < len2){
-        barUpdate(barDivs[i],bars[i],"red");
-        barUpdate(barDivs[j],bars[j],"red");
+        barUpdate(firstDiv[i],first[i],"red");
+        barUpdate(secondDiv[j],second[j],"red");
 
         if(first[i] < second[j]){
             bars[mergeIndex++] = first[i++];
