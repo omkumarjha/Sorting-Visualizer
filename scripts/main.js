@@ -106,3 +106,22 @@ function runalgo(e){
                         break;
     }
 }
+
+
+ // Function to perform actions based on screen width
+ function handleScreenWidth() {
+    var screenWidth = window.innerWidth || document.documentElement.clientWidth;
+
+    if (screenWidth < 500) {
+        let element = document.querySelector(".barSizeRange");
+        element.innerHTML = `<span>Size:</span>
+        <input type="range" class="barSizeRangeInput" min="10" max="50">`
+    }
+
+  }
+
+  // Initial call to set behavior based on screen width
+  handleScreenWidth();
+
+  // Attach the function to the resize event to update behavior on window resize
+  window.addEventListener('resize', handleScreenWidth);

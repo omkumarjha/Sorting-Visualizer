@@ -47,7 +47,7 @@ function max_heapify(n,i){
 }
 
 function heap_sort(){
-    for(var i=n/2;i>=0;i--){
+    for(var i= Math.floor(n / 2);i>=0;i--){
         max_heapify(n,i);
     }
 

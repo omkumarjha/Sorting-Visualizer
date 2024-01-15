@@ -6,6 +6,7 @@
 body{
     margin: 0px 20px;
     background-color: black;    
+    /* overflow: hidden; */
 }
 
 nav{
@@ -52,8 +53,8 @@ span{
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    height: 615px;
-    overflow: hidden;
+    height: 80vh;
+    padding: 0px 20px;
 }
 
 .bar{
@@ -70,4 +71,30 @@ ul{
     display: flex;
     flex-direction: column;
     color: white;
+}
+
+/* Adding responsive code  */
+
+@media(max-width: 1500px) {
+    nav{
+        flex-direction: column;
+    }
+    ul{
+        display: flex;
+        flex-direction: column;
+        margin: 14px 0px;
+    }
+    nav ul button{
+        margin-top: 7px;
+    }
+    header{
+        padding-bottom: 10px;
+    }
+    
+}
+
+@media(max-width: 500px){
+    nav ul button{
+        font-size: 14px;
+    }
 }
