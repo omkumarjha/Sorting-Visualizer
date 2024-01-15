@@ -71,6 +71,8 @@ ul{
     display: flex;
     flex-direction: column;
     color: white;
+    padding: 0px 17px;
+    font-size: 15px;
 }
 
 /* Adding responsive code  */
@@ -95,6 +97,6 @@ ul{
 
 @media(max-width: 500px){
     nav ul button{
-        font-size: 14px;
+        font-size: 15px;
     }
 }
